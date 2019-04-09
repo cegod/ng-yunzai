@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "angular-firebase-schematic-ng-add",
+  "title": "Angular Firebase ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "systemCode": {
+      "type": "string",
+      "default": "",
+      "description": "your system code",
+      "x-prompt": "What is your project's system code?"
+    },
+    "clientType": {
+      "type": "string",
+      "default": "",
+      "enum": [
+        "CAS_SYSTEM",
+        "OPEN_SYSTEM"
+      ],
+      "description": "Your client type",
+      "x-prompt": "What is your project's client type?"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

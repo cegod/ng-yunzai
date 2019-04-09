@@ -1,0 +1,32 @@
+{
+  "name": "ng-yunzai",
+  "version": "0.0.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "git checkout HEAD -- temproject && git clean -f -d temproject",
+    "link:schematic": "yarn link && cd temproject && yarn link \"ng-yunzai\"",
+    "temproject:ng-add": "cd temproject && ng g ng-yunzai:ng-add",
+    "test": "yarn clean && yarn temproject:ng-add && yarn test:temproject",
+    "test:unit": "yarn build && jasmine src/**/*_spec.js",
+    "test:temproject": "cd temproject && yarn lint && yarn test && yarn build",
+    "start": "yarn build && yarn clean && yarn link:schematic && yarn temproject:ng-add"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^7.3.8",
+    "@angular-devkit/schematics": "^7.3.8",
+    "@angular/cdk": "^7.3.7",
+    "@schematics/angular": "^7.3.8",
+    "@types/jasmine": "^3.0.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.0.0",
+    "tslint": "^5.15.0",
+    "typescript": "~3.2.2"
+  }
+}
