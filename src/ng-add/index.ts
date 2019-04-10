@@ -16,23 +16,6 @@ import {getWorkspace} from '@schematics/angular/utility/config';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType} from "@schematics/angular/utility/dependencies";
 import {NodePackageInstallTask} from "@angular-devkit/schematics/tasks";
 
-export default function (_options: Schema): Rule {
-    return (_tree: Tree, _context: SchematicContext) => {
-        return chain([
-            // 生成依赖
-            generatePackageToPackageJson(_context),
-            // 生成scripts sonar hooks
-            generateScriptsSonarHooks(_context),
-            // 下载所有包
-            downLoadAllPackages(_context),
-            // 删除
-            removeOrginalFiles(_options),
-            // 创建
-            addFiles(_tree, _context, _options)
-        ]);
-    };
-}
-
 const dependencies: NodeDependency[] = [
     {type: NodeDependencyType.Default, version: '1.1.20-alpha', name: 'yunzai'},
     {type: NodeDependencyType.Default, version: '^4.14.123', name: 'lodash'},
@@ -44,6 +27,24 @@ const dependencies: NodeDependency[] = [
     {type: NodeDependencyType.Dev, version: '^2.4.0', name: 'sonarqube-scanner'},
 
 ]
+
+
+export default function (_options: Schema): Rule {
+    return (_tree: Tree, _context: SchematicContext) => {
+        return chain([
+            // 生成依赖
+            generatePackageToPackageJson(_context),
+            // 生成scripts sonar hooks
+            generateScriptsSonarHooks(_context),
+            // 删除
+            removeOrginalFiles(_options),
+            // 创建
+            addFiles(_tree, _context, _options),
+            // 下载所有包
+            downLoadAllPackages(_context),
+        ]);
+    };
+}
 
 
 export function generatePackageToPackageJson(_context: SchematicContext): Rule {
@@ -78,7 +79,6 @@ export function generateScriptsSonarHooks(_context: SchematicContext): Rule {
             json.husky.hooks['commit-msg'] = "validate-commit-msg";
             host.overwrite('package.json', JSON.stringify(json, null, 2));
         }
-        _context.addTask(new NodePackageInstallTask());
         return host;
     };
 }
@@ -116,14 +116,14 @@ function addFiles(_tree: Tree, _context: SchematicContext, options: Schema) {
     const project = getProjectFromWorkspace(workspace, options.project);
     return chain([
             mergeWith(
-                apply(url('./files/src'), [
+                apply(url('./files'), [
                     template({
                         ...options,
                     }),
-                    move(project.sourceRoot as string),
+                    move(project.root as string),
                 ]),
                 MergeStrategy.Overwrite
-            ),
+            )
         ]
     );
 }
