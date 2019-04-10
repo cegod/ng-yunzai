@@ -21,20 +21,19 @@ ng add yunzai@latest
 
 # Run
 
-## config
+## Config
 
 1.config your stomp server's address in sharedModule  
 2.config your service server's address in environments  
 
-## run
+## Run
 
 ```
 ng serve
 ```
 
-# Others
 
-## sonar-scan
+# Sonar-Scanner
 
 config your sonar server's address in sonar-scanner.properties  
 and run the script
@@ -47,7 +46,7 @@ it will push to the serve automaticly
 
 
 
-## commit
+# Git commit
 
 pre commit the git hook will run `ng lint` to check your code  
 if lint error you will not push the code.
