@@ -97,12 +97,18 @@ function removeOrginalFiles(options: Schema) {
         [
             `${project.sourceRoot}/environments/environment.prod.ts`,
             `${project.sourceRoot}/environments/environment.ts`,
+            `${project.sourceRoot}/assets/logo/applicationLogo.png`,
+            `${project.sourceRoot}/assets/logo/maxLogo.png`,
+            `${project.sourceRoot}/assets/logo/miniLogo.png`,
+            `${project.sourceRoot}/assets/user_man_icon.png`,
             `${project.sourceRoot}/index.html`,
             `${project.sourceRoot}/app/app.module.ts`,
             `${project.sourceRoot}/app/app.component.ts`,
             `${project.sourceRoot}/app/app.component.html`,
             `${project.sourceRoot}/app/app.component.less`,
-            `${project.sourceRoot}/app/app.component.css`,
+            `${project.sourceRoot}/app/demo/demo.component.html`,
+            `${project.sourceRoot}/app/demo/demo.component.less`,
+            `${project.sourceRoot}/app/demo/demo.component.ts`,
             `${project.sourceRoot}/app/app-routing.module.ts`,
         ]
             .filter(p => host.exists(p))

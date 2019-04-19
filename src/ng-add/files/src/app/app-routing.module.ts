@@ -1,11 +1,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {Y401Component, YzLayoutComponent} from 'yunzai';
+import {DemoComponent} from './demo/demo.component';
+import {ActGuard, Http401Component, YzLayoutComponent} from 'yunzai';
 
 const routes: Routes = [
+  {path: 'http401', component: Http401Component},
   {
-    path: '', component: YzLayoutComponent, children: [
-      {path: 'y401', component: Y401Component}
+    path: '', component: YzLayoutComponent,
+    canActivate: [ActGuard],
+    children: [
+      {path: '', component: DemoComponent},
     ]
   },
 ];

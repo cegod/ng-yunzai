@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "fixcode": "yarn lint --fix",
-    "version": "yarn fixcode && ./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json",
+    "version": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json",
     "scanner": "yarn fixcode && ./node_modules/.bin/sonar-scanner"
   },
   "private": true,

@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  gateway: `http://222.30.194.225:9000`,
+  central: `http://222.30.194.225:9000/cas-proxy`,
   production: false
 };
 
