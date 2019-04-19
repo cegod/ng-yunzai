@@ -27,8 +27,8 @@ const baseClient: BaseClient = {
   ignores: [`${environment.central}/app/validate_full?callback=${window.location.href}`],
   plugins: plugins,
   http401: 'http401',
-  systemcode: 'notice',
-  type: BaseClientType.CAS_SYSTEM
+  systemcode: <% if(systemCode) { %><%= `'${systemCode}'` %><%} else {%>null<%}%>,
+  type: <% if(clientType === 'CAS_SYSTEM'){%>BaseClientType.CAS_SYSTEM<%}else if(clientType === 'OPEN_SYSTEM'){ %>BaseClientType.OPEN_SYSTEM<%}%>
 };
 
 @NgModule({
