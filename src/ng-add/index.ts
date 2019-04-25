@@ -75,7 +75,7 @@ export function generateScriptsSonarHooks(_context: SchematicContext): Rule {
             if (!json.husky) {
                 json.husky = {hooks: {}}
             }
-            json.husky.hooks['pre-commit'] = "yarn lint";
+            json.husky.hooks['pre-commit'] = "npm run lint";
             json.husky.hooks['commit-msg'] = "validate-commit-msg";
             host.overwrite('package.json', JSON.stringify(json, null, 2));
         }
