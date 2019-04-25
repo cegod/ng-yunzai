@@ -1,5 +1,6 @@
 export interface Schema {
     project: string;
     systemCode: string;
-    clientType: 'CAS' | 'OPEN'
+    clientType: 'CAS' | 'OPEN';
+    stompPlugin: boolean;
 }
