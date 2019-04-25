@@ -26,6 +26,13 @@
       ],
       "description": "Your client type",
       "x-prompt": "What is your project's client type?"
+    },
+    "stompPlugin": {
+      "type": "boolean",
+      "default": false,
+      "enum": [true,false],
+      "description": "stomp plugin",
+      "x-prompt": "Do you want to add Stomp Plugins?"
     }
   },
   "required": [],

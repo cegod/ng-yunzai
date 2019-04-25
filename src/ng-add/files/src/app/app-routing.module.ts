@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: '', component: YzLayoutComponent,
     canActivate: [ActGuard],
+    canActivateChild: [ActGuard],
     children: [
       {path: '', component: DemoComponent},
     ]

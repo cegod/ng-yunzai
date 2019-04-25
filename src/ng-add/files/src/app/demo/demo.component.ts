@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NowUserService, User} from 'yunzai';
+import {UserService} from 'yunzai';
 
 @Component({
   selector: 'app-demo',
@@ -9,15 +9,11 @@ import {NowUserService, User} from 'yunzai';
 export class DemoComponent implements OnInit {
 
 
-  constructor(private nowUser: NowUserService) {
+  constructor(private user: UserService) {
   }
 
   ngOnInit() {
-    this.nowUser.getUser().subscribe((user: User) => {
-      if (user) {
-        console.log(user);
-      }
-    });
+    console.log(this.user.get());
   }
 
 }

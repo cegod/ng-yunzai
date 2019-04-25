@@ -68,9 +68,9 @@ export function generateScriptsSonarHooks(_context: SchematicContext): Rule {
                 json.scripts = {}
             } else {
                 json.scripts.lint = "ng lint";
-                json.scripts.fixcode = "yarn lint --fix";
+                json.scripts.fixcode = "npm run lint --fix";
                 json.scripts.version = "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s --pkg package.json";
-                json.scripts.scanner = "yarn fixcode && ./node_modules/.bin/sonar-scanner"
+                json.scripts.scanner = "npm run fixcode && ./node_modules/.bin/sonar-scanner"
             }
             if (!json.husky) {
                 json.husky = {hooks: {}}

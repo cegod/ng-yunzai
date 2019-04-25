@@ -10,7 +10,7 @@ import {RouterModule} from '@angular/router';
 import {environment} from 'src/environments/environment';
 
 const plugins: Map<BasePluginType, BasePlugin> = new Map();
-
+<% if(stompPlugin){%>
 const stompPlugin: StompPlugin = {
   brokerURL: 'ws://0.0.0.0:15674/ws',
   connectHeaders: {login: 'guest', passcode: 'guest'},
@@ -18,14 +18,14 @@ const stompPlugin: StompPlugin = {
   heartbeatOutgoing: 20000,
   reconnectDelay: 200
 };
-
 plugins.set(BasePluginType.STOMP, stompPlugin);
+<%}%>
 
 const baseClient: BaseClient = {
   central: `${environment.central}`,
   gateway: `${environment.gateway}`,
   ignores: [`${environment.central}/app/validate_full?callback=${window.location.href}`],
-  plugins: plugins,
+  plugins,
   http401: 'http401',
   systemcode: <% if(systemCode) { %><%= `'${systemCode}'` %><%} else {%>null<%}%>,
   type: <% if(clientType === 'CAS_SYSTEM'){%>BaseClientType.CAS_SYSTEM<%}else if(clientType === 'OPEN_SYSTEM'){ %>BaseClientType.OPEN_SYSTEM<%}%>
